@@ -96,15 +96,24 @@ export function CheckoutForm() {
           if (res.isOk) {
             alert(res.message);
             try {
-              await axios.post(`${process.env.NEXT_PUBLIC_COURSE_PLATFORM_URL}/api/callback`, {
-                orderId: siyaratechOrderId,
-                status: 'COMPLETED',
-                data: {}
-              });
-              router.push(`${process.env.NEXT_PUBLIC_SIYARATECH_URL}/payment-success?orderId=${siyaratechOrderId}`);
-            } catch (error) {
-              console.error('Failed to notify course-platform:', error);
-            }
+                await axios.post(
+                  `${process.env.NEXT_PUBLIC_COURSE_PLATFORM_URL}/api/callback`,
+                  {
+                    orderId: siyaratechOrderId,
+                    status: 'COMPLETED',
+                    data: {},
+                  },
+                  {
+                    headers: {
+                      Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`, 
+                    },
+                  }
+                );
+                router.push(`${process.env.NEXT_PUBLIC_SIYARATECH_URL}/payment-success?orderId=${siyaratechOrderId}`);
+              } catch (error) {
+                console.error('Failed to notify course-platform:', error);
+              }
+              
           } else {
             alert(res.message);
           }
