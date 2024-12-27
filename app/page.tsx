@@ -81,7 +81,7 @@ export default function page() {
   return (
     <div className="container py-8 flex flex-col items-center justify-center text-center">
       <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight">Pricing Plans</h1>
-      <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight"> Choose the plan that's right for you</h2>
+      <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight"> Choose the plan that&apos;s right for you</h2>
       <section className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-8 mt-20">
         {plans.map((plan) => {
           return <PricingCard key={plan.title} {...plan} />;
