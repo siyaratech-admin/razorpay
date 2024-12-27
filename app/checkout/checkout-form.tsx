@@ -158,7 +158,7 @@ export function CheckoutForm() {
             <CardTitle className="my-4">Continue</CardTitle>
             <CardDescription>
               By clicking on pay you&apos;ll purchase your plan subscription of{" "}
-              {formatPrice(parseFloat(amount!), currency)}
+              {formatPrice(parseFloat(amount!) /100, currency)}
             </CardDescription>
           </CardHeader>
           <CardContent>
